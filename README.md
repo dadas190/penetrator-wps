@@ -34,12 +34,12 @@ Then, just run ./install.sh and run 'penetrator'
 
 <b>1. Adding targets manually</b><<br>
 This command will attack two APs on channel 1 at the same time, one has BSSID 11:22:33:44:55:66 and second has ESSID "example" and BSSID66:55:44:33:22:11<br>
-<b>penetrator -i mon0 -c 1 -b 11:22:33:44:55:66 -e example -b 66:55:44:33:22:11</b><br>
+<b>penetrator -i mon0 -c 1 -b 11:22:33:44:55:66 -e example -b 66:55:44:33:22:11</b><br><br>
 <b>2. Attacking entire channel</b><br>
 This will scan for APs on channel 1 and attack them all at the same time<br>
-<b>penetrator -i mon0 -c 1</b><br>
+<b>penetrator -i mon0 -c 1</b><br><br>
 <b>3. Attacking all APs in range with pixiewps</b><br>
 This will scan all specified channels (or range 1-13 if nothing is specified) and will try pixie-dust attack on all of them.<br>
 There is a timeout of 1 minute for every channel, so if it fails to capture M3 message from some APs, it will just skip them.<br>
 By default, all APs on the same channel will be attacked at the same time, this can be disabled with <b>-M</b><br>
-penetrator -i mon0 -A
+<b>penetrator -i mon0 -A</b>
