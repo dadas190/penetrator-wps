@@ -3,7 +3,7 @@
     Copyright (C) 2015 David Cernak <d.cernak@pobox.sk>
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1573,7 +1573,7 @@ void *attack_thread(void *data){
         attack->packet=NULL;
         sem_post(&(attack->ready));
         break;
-    }
+    }else sem_post(&(attack->ready));
   }
   if(attack->ssid){
     if(VERBOSE>0)printf("[PENETRATOR] Beacon received ok, ssid: %s\n",attack->ssid);
@@ -1720,8 +1720,9 @@ void setchannel(char *device,int channel){
     }  
     pclose(p);
     if(iwfreq==freq[channel-1])break;
+    usleep(100000);
   }
-  if(i==10){printf("Error setting channel %d\n",channel);exit(0);}
+  if(i==10){printf("Error setting channel %d\n",channel);return;}
   AKTCHANNEL=channel;
 }
 
